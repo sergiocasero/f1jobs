@@ -1,7 +1,7 @@
 package com.sergiocasero.f1jobs
 
 import SERVER_PORT
-import com.sergiocasero.f1jobs.scraping.getRedBullJobs
+import com.sergiocasero.f1jobs.scraping.getWilliamsJobs
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
@@ -24,7 +24,7 @@ fun Application.module() {
     }
     routing {
         get("/") {
-            call.respond(getRedBullJobs())
+            call.respond(getWilliamsJobs())
         }
     }
 }

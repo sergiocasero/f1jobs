@@ -1,6 +1,7 @@
 package com.sergiocasero.f1jobs.scraping
 
 import com.sergiocasero.f1jobs.request.redbull.RedbullJobsResponse
+import com.sergiocasero.f1jobs.utils.httpClient
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
@@ -17,11 +18,7 @@ suspend fun getRedBullJobs(): List<JobOffer> {
     // http request to https://rbrworkday.redbull.com/, returns a json with the job offers
     // parse the json and return a list of JobOffer
 
-    return HttpClient(CIO) {
-        install(ContentNegotiation) {
-            json()
-        }
-    }.use {
+    return httpClient.use {
         it.get {
             url {
                 protocol = URLProtocol.HTTPS
